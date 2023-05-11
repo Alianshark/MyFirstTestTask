@@ -22,14 +22,16 @@ app.ticker.add(gameLoop)
 
 function gameLoop(delta) {
   elapsed += delta
-
+  movePlayer()
+  bullets.forEach(moveBullet)
+}
+function movePlayer() {
   if (isArrowLeftPressed && player.x > 0) {
     player.x -= 10
   }
   if (isArrowRightPressed && player.x < 1280 - player.width) {
     player.x += 10
   }
-  bullets.forEach(moveBullet)
 }
 
 addKeybordMovement()
