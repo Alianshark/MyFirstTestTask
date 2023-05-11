@@ -1,51 +1,71 @@
 import * as PIXI from './lib/pixi.mjs'
-let framesPerSecond = 0
-const app = new PIXI.Application({ width: 1280, height: 720 })
+import { bullet } from './bullet.js'
+
+const gameScreenWidth = 1280
+const gameScreenHeight = 720
+
+const app = new PIXI.Application({
+  width: gameScreenWidth,
+  height: gameScreenHeight,
+})
 document.body.appendChild(app.view)
 
-let sprite = PIXI.Sprite.from('./img/rocket.png')
-app.stage.addChild(sprite)
+let player = PIXI.Sprite.from('./img/rocket.png')
+let asteroid = PIXI.Sprite.from('./img/drone2.png')
+app.stage.addChild(player)
+app.stage.addChild(asteroid)
+app.stage.addChild(bullet)
 
 let elapsed = 0.0
 app.ticker.add(gameLoop)
 
 function gameLoop(delta) {
   elapsed += delta
-  if (isArrowLeftPressed) {
-    sprite.x -= 10
+
+  if (isArrowLeftPressed && player.x > 0) {
+    player.x -= 10
   }
-  if (isArrowRightPressed) {
-    sprite.x += 10
+  if (isArrowRightPressed && player.x < 1280 - player.width) {
+    player.x += 10
+  }
+  if (isRocketLaunched) {
+    bullet.y -= 10
   }
 }
 
 addKeybordMovement()
-
-let isArrowLeftPressed = false
-let isArrowRightPressed = false
 
 function addKeybordMovement() {
   window.addEventListener('keydown', handleKeyDown)
   window.addEventListener('keyup', handleKeyUp)
 }
 
-function handleKeyDown(event) {
+let isArrowRightPressed = false
+let isArrowLeftPressed = false
+let isRocketLaunched = false
+
+export function handleKeyDown(event) {
+  console.log('Pressed:')
   if (event.key == 'ArrowLeft') {
     isArrowLeftPressed = true
-    console.log('ArrowLeft pressed', event.key)
   }
   if (event.key == 'ArrowRight') {
     isArrowRightPressed = true
-
-    console.log('ArrowRignt Pressed', event.key)
+  }
+  if (event.key == ' ') {
+    fireBullet()
   }
 }
 
-function handleKeyUp(event) {
+export function handleKeyUp(event) {
   if (event.key == 'ArrowLeft') {
     isArrowLeftPressed = false
   }
   if (event.key == 'ArrowRight') {
     isArrowRightPressed = false
   }
+}
+
+function fireBullet() {
+  isRocketLaunched = true
 }
