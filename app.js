@@ -1,5 +1,5 @@
 import * as PIXI from './lib/pixi.mjs'
-import { bullet } from './bullet.js'
+import { createBullet } from './bullet.js'
 
 const gameScreenWidth = 1280
 const gameScreenHeight = 720
@@ -11,10 +11,10 @@ const app = new PIXI.Application({
 document.body.appendChild(app.view)
 
 let player = PIXI.Sprite.from('./img/rocket.png')
+player.y = 540
 let asteroid = PIXI.Sprite.from('./img/drone2.png')
 app.stage.addChild(player)
 app.stage.addChild(asteroid)
-app.stage.addChild(bullet)
 
 let elapsed = 0.0
 app.ticker.add(gameLoop)
@@ -28,9 +28,7 @@ function gameLoop(delta) {
   if (isArrowRightPressed && player.x < 1280 - player.width) {
     player.x += 10
   }
-  if (isRocketLaunched) {
-    bullet.y -= 10
-  }
+  bullets.forEach(moveBullet)
 }
 
 addKeybordMovement()
@@ -43,7 +41,7 @@ function addKeybordMovement() {
 let isArrowRightPressed = false
 let isArrowLeftPressed = false
 let isRocketLaunched = false
-
+let bullets = []
 export function handleKeyDown(event) {
   console.log('Pressed:')
   if (event.key == 'ArrowLeft') {
@@ -67,5 +65,14 @@ export function handleKeyUp(event) {
 }
 
 function fireBullet() {
+  //console.log('text', bullets)
   isRocketLaunched = true
+  const newBullet = createBullet()
+  app.stage.addChild(newBullet)
+  bullets.push(newBullet)
+  console.log('text', bullets)
+}
+
+function moveBullet(bullet) {
+  bullet.y -= 10
 }
