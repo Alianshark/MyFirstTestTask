@@ -27,8 +27,13 @@ let elapsed = 0.0
 app.ticker.add(gameLoop)
 
 function gameLoop(delta) {
-  elapsed += delta
-  movePlayer()
+ if (elapsed < 6000) {
+console.log('times tarts', elapsed)
+   elapsed += delta
+   movePlayer()
+  } else {
+    console.log('time Out!')
+  }
   
   if (movePlayer) {
     bullets.x= player.x
