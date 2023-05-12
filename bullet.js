@@ -30,7 +30,9 @@ export function moveBullet(bullet) {
 
 export function fireBullet(app) {
   isRocketLaunched = true
-  const newBullet = createBullet(player.x,player.y)
-  app.stage.addChild(newBullet)
-  bullets.push(newBullet)
+  if(bullets.length <= 10){
+    const newBullet = createBullet(player.x,player.y)
+    bullets.push(newBullet)
+    app.stage.addChild(newBullet)
+  }
 }
