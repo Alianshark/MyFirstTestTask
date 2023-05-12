@@ -1,8 +1,8 @@
 import * as PIXI from './lib/pixi.mjs'
-import { moveBullet, bullets, fireBullet } from './bullet.js'
-import { player, movePlayer } from './player.js'
-import { addKeybordMovement } from './keybordactions.js'
-
+import { moveBullet, bullets } from './bullet.js'
+import { player } from './player.js'
+import { addKeybordMovement, movePlayer } from './keybordactions.js'
+import { asteroid } from './asteroids.js'
 
 const gameScreenWidth = 1280
 const gameScreenHeight = 720
@@ -15,7 +15,7 @@ const app = new PIXI.Application({
 document.body.appendChild(app.view)
 
 app.stage.addChild(player)
-//app.stage.addChild()
+app.stage.addChild(asteroid)
 
 
 let elapsed = 0.0
@@ -28,4 +28,4 @@ function gameLoop(delta) {
 }
 
 
-addKeybordMovement()
+addKeybordMovement(app)
