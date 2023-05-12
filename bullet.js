@@ -1,14 +1,14 @@
 import * as PIXI from './lib/pixi.mjs'
 
-export function createBullet() {
+function createBullet() {
   const ract = new PIXI.Graphics()
-  ract.beginFill('red')
-  ract.drawRect(100, 200, 40, 80)
+  ract.beginFill('yellow')
+  ract.drawRect(100, 200, 20, 40)
   ract.endFill()
 
   const circle = new PIXI.Graphics()
   circle.beginFill(0xffffff)
-  circle.drawCircle(120, 200, 20)
+  circle.drawCircle(110, 200, 10)
   circle.endFill()
 
   const bullet = new PIXI.Container()
