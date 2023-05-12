@@ -3,6 +3,7 @@ import { isArrowLeftPressed,isArrowRightPressed } from './keybordactions.js'
 
 export let player = PIXI.Sprite.from('./img/rocket.png')
 player.y = 540
+player.x = 640
 
 export function movePlayer() {
     if (isArrowLeftPressed && player.x > 0) {

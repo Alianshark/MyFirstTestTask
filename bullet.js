@@ -17,8 +17,8 @@ function createBullet() {
   return bullet
 }
 
-let isRocketLaunched = false
 export let bullets = []
+let isRocketLaunched = false
 
 export function moveBullet(bullet) {
   bullet.y -= 10
@@ -28,7 +28,6 @@ export function moveBullet(bullet) {
 export function fireBullet(app) {
   isRocketLaunched = true
   const newBullet = createBullet()
-
   app.stage.addChild(newBullet)
   bullets.push(newBullet)
 }

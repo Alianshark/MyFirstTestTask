@@ -7,8 +7,17 @@ export function addKeybordMovement() {
   
 export let isArrowRightPressed = false
 export let isArrowLeftPressed = false
-  
-export function handleKeyDown(event) {
+    
+function handleKeyUp(event) {
+    if (event.key == 'ArrowLeft') {
+      isArrowLeftPressed = false
+    }
+    if (event.key == 'ArrowRight') {
+      isArrowRightPressed = false
+    }
+}
+
+function handleKeyDown(event) {
     console.log('Pressed:')
     if (event.key == 'ArrowLeft') {
       isArrowLeftPressed = true
@@ -18,15 +27,6 @@ export function handleKeyDown(event) {
     }
     if (event.key == ' ') {
       fireBullet(app)
-    }
-}
-    
-export function handleKeyUp(event) {
-    if (event.key == 'ArrowLeft') {
-      isArrowLeftPressed = false
-    }
-    if (event.key == 'ArrowRight') {
-      isArrowRightPressed = false
     }
 }
 
