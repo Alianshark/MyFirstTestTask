@@ -36,12 +36,12 @@ app.stage.addChild(basicText)
 app.ticker.add(gameLoop)
 
 function gameLoop(delta) {
-  basicText.text = Math.floor(elapsed) 
-  if (elapsed < 600) {
-   elapsed += delta
-   
-   movePlayer()
+  elapsed += delta
+  if (elapsed >= 3600) {
+    basicText.text = 'game Over'
   } else {
+    movePlayer()
+    basicText.text = Math.floor(elapsed/60) 
     console.log('time Out!')
     
   }
