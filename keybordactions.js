@@ -1,3 +1,5 @@
+import * as PIXI from './lib/pixi.mjs'
+
 import { fireBullet } from './bullet.js'
 import { player } from './player.js'
 
