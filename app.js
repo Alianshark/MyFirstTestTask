@@ -29,7 +29,6 @@ for (let i=0; i < 7; i++) {
   app.stage.addChild(asteroid)
 }
 
-
 app.stage.addChild(player)
 app.stage.addChild(basicText)
 
@@ -49,8 +48,6 @@ function gameLoop(delta) {
   console.log('delta:', delta)
   
   if (movePlayer) {
-    bullets.x= player.x
-    bullets.y = player.y
     bullets.forEach(moveBullet)
   }
 }
