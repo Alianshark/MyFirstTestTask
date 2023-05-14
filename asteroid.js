@@ -10,3 +10,11 @@ export function createNewAsteroid () {
   asteroid.y = Math.random() * 420
   return asteroid
 }
+
+export function creatAsteriods (app) {
+  for (let i=0; i < 3; i++) {  
+    let asteroid = createNewAsteroid()
+    asteroids.push(asteroid)
+    app.stage.addChild(asteroid)  
+  }
+}
