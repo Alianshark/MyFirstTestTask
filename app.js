@@ -33,7 +33,10 @@ function gameLoop(delta) {
   bulletLeftText.text = `bullets left: ${ammo.shots}`
   bullets.forEach(moveBullet)
   movePlayer()
+  endGameIfTimeOver()
+}
 
+function endGameIfTimeOver () {
   if (elapsed >= 3600) {
     gameTimeText.text = 'game Over'
     app.ticker.stop()
