@@ -1,6 +1,11 @@
 import * as PIXI from './lib/pixi.mjs'
 import { player } from './player.js'
 
+export let bullets = []
+export let ammo = {
+  shots: 10
+}
+
 function createBullet(x,y) {
   const ract = new PIXI.Graphics()
   ract.beginFill('yellow')
@@ -20,20 +25,15 @@ function createBullet(x,y) {
   return bullet
 }
 
-export let bullets = []
-
 export function moveBullet(bullet) {
   bullet.y -= 10
 }
 
 export function fireBullet(app) {
-  if(bullets.length <= 10){
+  if (bullets.length <= 10) {
     const newBullet = createBullet(player.x,player.y)
     bullets.push(newBullet)
     app.stage.addChild(newBullet)
   }
 }
 
-export let ammo = {
-  shots: 10
-}
