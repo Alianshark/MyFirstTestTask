@@ -18,15 +18,13 @@ const app = new PIXI.Application({
 document.body.appendChild(app.view)
 
 creatAsteriods(app)
+addKeybordMovement(app)
+
 app.stage.addChild(player)
 app.stage.addChild(gameTimeText)
 app.stage.addChild(bulletLeftText)
-app.ticker.add(gameLoop)
 
-if (hitTest()) {
-  let asteroid = asteroids[1]
-  asteroid.destroy()
-}
+app.ticker.add(gameLoop)
 
 function gameLoop(delta) {
   elapsed += delta
@@ -37,7 +35,7 @@ function gameLoop(delta) {
     gameTimeText.text = Math.floor(elapsed/60) 
     movePlayer()
   }
-
+  
   bulletLeftText.text = `bullets left: ${ammo.shots}`
   bullets.forEach(moveBullet)
 }
@@ -46,4 +44,8 @@ function hitTest () {
   return true;
 }
 
-addKeybordMovement(app)
+if (hitTest()) {
+  let asteroid = asteroids[1]
+  asteroid.destroy()
+}
+
