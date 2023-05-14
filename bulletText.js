@@ -5,5 +5,5 @@ const bulletTextStyle = new PIXI.TextStyle({
 })
 
 export const bulletLeftText = new PIXI.Text(``,bulletTextStyle);
-bulletLeftText.x = 150;
-bulletLeftText.y = 200;
+bulletLeftText.x = 10;
+bulletLeftText.y = 680;

@@ -5,6 +5,6 @@ const gameTimeTextStyle = new PIXI.TextStyle({
 })
   
 export const gameTimeText = new PIXI.Text(` `,gameTimeTextStyle);
-gameTimeText.x = 50;
-gameTimeText.y = 100;
+gameTimeText.x = 1240;
+gameTimeText.y = 0;
   
