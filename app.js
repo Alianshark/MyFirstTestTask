@@ -18,7 +18,7 @@ let elapsed = 0.0
 const styleEnd = new PIXI.TextStyle({
   fill: ['#ffffff', '#00ff99']
   })
-  const bulletText = new PIXI.Text(`bullets:${ammo.shots}`,styleEnd);
+  const bulletText = new PIXI.Text(``,styleEnd);
   bulletText.x = 150;
   bulletText.y = 200;
 
