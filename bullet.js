@@ -21,14 +21,12 @@ function createBullet(x,y) {
 }
 
 export let bullets = []
-let isRocketLaunched = false
 
 export function moveBullet(bullet) {
   bullet.y -= 10
 }
 
 export function fireBullet(app) {
-  isRocketLaunched = true
   if(bullets.length <= 10){
     const newBullet = createBullet(player.x,player.y)
     bullets.push(newBullet)
