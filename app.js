@@ -15,22 +15,20 @@ const app = new PIXI.Application({
 document.body.appendChild(app.view)
 let elapsed = 0.0
 
-const styleEnd = new PIXI.TextStyle({
+const bulletTextStyle = new PIXI.TextStyle({
   fill: ['#ffffff', '#00ff99']
-  })
-  const bulletText = new PIXI.Text(``,styleEnd);
-  bulletText.x = 150;
-  bulletText.y = 200;
-
-
-
+})
+const bulletText = new PIXI.Text(``,bulletTextStyle);
+bulletText.x = 150;
+bulletText.y = 200;
+  
 const style = new PIXI.TextStyle({
   fill: ['#ffffff', '#00ff99']
 })
 
-const basicText = new PIXI.Text(`${elapsed}`,style);
-basicText.x = 50;
-basicText.y = 100;
+const gameTime = new PIXI.Text(`${elapsed}`,style);
+gameTime.x = 50;
+gameTime.y = 100;
 
 
 for (let i=0; i < 7; i++) {  
@@ -40,7 +38,7 @@ for (let i=0; i < 7; i++) {
 }
 
 app.stage.addChild(player)
-app.stage.addChild(basicText)
+app.stage.addChild(gameTime)
 app.stage.addChild(bulletText)
 app.ticker.add(gameLoop)
 
@@ -48,9 +46,9 @@ function gameLoop(delta) {
   elapsed += delta
 
   if (elapsed >= 3600) {
-    basicText.text = 'game Over'
+    gameTime.text = 'game Over'
   } else {
-    basicText.text = Math.floor(elapsed/60) 
+    gameTime.text = Math.floor(elapsed/60) 
     movePlayer()
   }
   bulletText.text = `bullets left: ${ammo.shots}`
