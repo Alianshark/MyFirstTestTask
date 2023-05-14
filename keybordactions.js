@@ -41,6 +41,7 @@ export function addKeybordMovement(app) {
     if (isArrowRightPressed && player.x < 1280 - player.width) {
       player.x += 10
     }
+    return true
   }
 
 
