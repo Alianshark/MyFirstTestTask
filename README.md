@@ -4,6 +4,8 @@
 
 [https://alianshark.github.io/SpaceGameShooter/](https://alianshark.github.io/SpaceGameShooter/) 
 
+## Demo
+
 ![Demo](/readme-img/demo.gif)
 
 ## How to start
