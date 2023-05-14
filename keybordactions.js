@@ -1,25 +1,27 @@
 import * as PIXI from './lib/pixi.mjs'
 
-import { fireBullet } from './bullet.js'
+import { fireBullet, ammo } from './bullet.js'
 import { player } from './player.js'
 
 export function addKeybordMovement(app) {
-    window.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('keyup', handleKeyUp)
-    function handleKeyDown(event) {
-        console.log('Pressed:')
-        if (event.key == 'ArrowLeft') {
-          isArrowLeftPressed = true
-        }
-        if (event.key == 'ArrowRight') {
-          isArrowRightPressed = true
-        }
-        if (event.key == ' ') {
+  window.addEventListener('keydown', handleKeyDown)
+  window.addEventListener('keyup', handleKeyUp)
+  function handleKeyDown(event) {
+    console.log('Pressed:')
+    if (event.key == 'ArrowLeft') {
+      isArrowLeftPressed = true
+    }
+    if (event.key == 'ArrowRight') {
+      isArrowRightPressed = true
+    }
+    if (event.key == ' ') {
           fireBullet(app)
+          ammo.shots = ammo.shots - 1
+          console.log('space pressed')
         }
       }
   }
-  
+
   let isArrowRightPressed = false
   let isArrowLeftPressed = false
     

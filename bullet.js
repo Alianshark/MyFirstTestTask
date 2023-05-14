@@ -36,3 +36,7 @@ export function fireBullet(app) {
     app.stage.addChild(newBullet)
   }
 }
+
+export let ammo = {
+  shots: 10
+}
