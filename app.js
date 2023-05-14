@@ -5,9 +5,9 @@ import { addKeybordMovement, movePlayer } from './keybordactions.js'
 import { asteroids, creatAsteriods } from './asteroid.js'
 import { bulletLeftText } from './bulletText.js'
 import { gameTimeText } from './gameTimeText.js'
+import { gameScreenHeight, gameScreenWidth } from './config.js'
 
-const gameScreenWidth = 1280
-const gameScreenHeight = 720
+
 let elapsed = 0.0
 
 const app = new PIXI.Application({
