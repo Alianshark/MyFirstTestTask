@@ -4,6 +4,7 @@ import { player } from './player.js'
 import { addKeybordMovement, movePlayer } from './keybordactions.js'
 import { asteroids, createNewAsteroid } from './asteroid.js'
 import { bulletLeftText } from './bulletText.js'
+import { gameTimeText } from './gameTimeText.js'
 
 const gameScreenWidth = 1280
 const gameScreenHeight = 720
@@ -16,17 +17,6 @@ const app = new PIXI.Application({
 
 document.body.appendChild(app.view)
 
-
-
-const gameTimeTextStyle = new PIXI.TextStyle({
-  fill: ['#ffffff', '#00ff99']
-})
-
-const gameTime = new PIXI.Text(`${elapsed}`,gameTimeTextStyle);
-gameTime.x = 50;
-gameTime.y = 100;
-
-
 for (let i=0; i < 3; i++) {  
   let asteroid = createNewAsteroid()
   asteroids.push(asteroid)
@@ -34,7 +24,7 @@ for (let i=0; i < 3; i++) {
 }
 
 app.stage.addChild(player)
-app.stage.addChild(gameTime)
+app.stage.addChild(gameTimeText)
 app.stage.addChild(bulletLeftText)
 app.ticker.add(gameLoop)
 
@@ -43,16 +33,16 @@ if (hitTest()) {
   asteroid.destroy()
 }
 
-
 function gameLoop(delta) {
   elapsed += delta
   
   if (elapsed >= 3600) {
-    gameTime.text = 'game Over'
+    gameTimeText.text = 'game Over'
   } else {
-    gameTime.text = Math.floor(elapsed/60) 
+    gameTimeText.text = Math.floor(elapsed/60) 
     movePlayer()
   }
+  
   bulletLeftText.text = `bullets left: ${ammo.shots}`
   bullets.forEach(moveBullet)
 }
