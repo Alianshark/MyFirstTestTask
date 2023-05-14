@@ -10,3 +10,4 @@ export function createNewAsteroid () {
   asteroid.y = Math.random() * 420
   return asteroid
 }
+

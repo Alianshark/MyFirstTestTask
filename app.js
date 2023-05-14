@@ -31,16 +31,21 @@ gameTime.x = 50;
 gameTime.y = 100;
 
 
-for (let i=0; i < 7; i++) {  
+for (let i=0; i < 3; i++) {  
   let asteroid = createNewAsteroid()
   asteroids.push(asteroid)
-  app.stage.addChild(asteroid)
+  app.stage.addChild(asteroid)  
 }
 
 app.stage.addChild(player)
 app.stage.addChild(gameTime)
 app.stage.addChild(bulletText)
 app.ticker.add(gameLoop)
+
+if (hitTest()) {
+  let asteroid = asteroids[1]
+  asteroid.destroy()
+}
 
 function gameLoop(delta) {
   elapsed += delta
@@ -56,6 +61,10 @@ function gameLoop(delta) {
   if (movePlayer) {
     bullets.forEach(moveBullet)
   }
+}
+
+function hitTest () {
+  return true;
 }
 
 addKeybordMovement(app)
