@@ -57,10 +57,7 @@ function gameLoop(delta) {
     movePlayer()
   }
   bulletText.text = `bullets left: ${ammo.shots}`
-
-  if (movePlayer()) {
-    bullets.forEach(moveBullet)
-  }
+  bullets.forEach(moveBullet)
 }
 
 function hitTest () {

@@ -25,7 +25,6 @@ let isRocketLaunched = false
 
 export function moveBullet(bullet) {
   bullet.y -= 10
-  console.log('text')
 }
 
 export function fireBullet(app) {
