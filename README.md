@@ -4,6 +4,19 @@
 
 [https://alianshark.github.io/SpaceGameShooter/](https://alianshark.github.io/SpaceGameShooter/) 
 
+![Demo](/readme-img/demo.gif)
+
+## How to start
+
+```
+git clone https://github.com/Alianshark/SpaceGameShooter
+
+cd SpaceGameShooter
+
+npx http-server .
+```
+
+
 ## Тестове завдання:
 Cтворити примітивну гру з космічним кораблем, що збиває астероїди ("space shooter"), використовуючи наступні технології: HTML, JavaScript/TypeScript, PIXI.js;
 
