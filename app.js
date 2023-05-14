@@ -7,7 +7,6 @@ import { bulletLeftText } from './bulletText.js'
 import { gameTimeText } from './gameTimeText.js'
 import { gameScreenHeight, gameScreenWidth } from './config.js'
 
-
 let elapsed = 0.0
 
 const app = new PIXI.Application({
@@ -44,13 +43,3 @@ function endGameIfTimeOver () {
     app.ticker.stop()
   } 
 }
-
-function hitTest () {
-  return true;
-}
-
-if (hitTest()) {
-  let asteroid = asteroids[1]
-  asteroid.destroy()
-}
-
