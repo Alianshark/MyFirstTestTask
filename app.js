@@ -29,15 +29,15 @@ app.ticker.add(gameLoop)
 function gameLoop(delta) {
   elapsed += delta
   
-  if (elapsed >= 3600) {
-    gameTimeText.text = 'game Over'
-  } else {
-    gameTimeText.text = Math.floor(elapsed/60) 
-    movePlayer()
-  }
-  
+  gameTimeText.text = Math.floor(elapsed/60) 
   bulletLeftText.text = `bullets left: ${ammo.shots}`
   bullets.forEach(moveBullet)
+  movePlayer()
+
+  if (elapsed >= 3600) {
+    gameTimeText.text = 'game Over'
+    app.ticker.stop()
+  } 
 }
 
 function hitTest () {
