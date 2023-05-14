@@ -30,7 +30,7 @@ export function moveBullet(bullet) {
 }
 
 export function fireBullet(app) {
-  if (bullets.length <= 10) {
+  if (bullets.length < 10) {
     const newBullet = createBullet(player.x,player.y)
     bullets.push(newBullet)
     app.stage.addChild(newBullet)
