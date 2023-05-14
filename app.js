@@ -3,7 +3,7 @@ import { moveBullet, bullets, ammo } from './bullet.js'
 import { player } from './player.js'
 import { addKeybordMovement, movePlayer } from './keybordactions.js'
 import { asteroids, createNewAsteroid } from './asteroid.js'
-import { bulletText } from './bulletText.js'
+import { bulletLeftText } from './bulletText.js'
 
 const gameScreenWidth = 1280
 const gameScreenHeight = 720
@@ -35,7 +35,7 @@ for (let i=0; i < 3; i++) {
 
 app.stage.addChild(player)
 app.stage.addChild(gameTime)
-app.stage.addChild(bulletText)
+app.stage.addChild(bulletLeftText)
 app.ticker.add(gameLoop)
 
 if (hitTest()) {
@@ -53,7 +53,7 @@ function gameLoop(delta) {
     gameTime.text = Math.floor(elapsed/60) 
     movePlayer()
   }
-  bulletText.text = `bullets left: ${ammo.shots}`
+  bulletLeftText.text = `bullets left: ${ammo.shots}`
   bullets.forEach(moveBullet)
 }
 

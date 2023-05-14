@@ -4,6 +4,6 @@ const bulletTextStyle = new PIXI.TextStyle({
     fill: ['#ffffff', '#00ff99']
 })
 
-export const bulletText = new PIXI.Text(``,bulletTextStyle);
-bulletText.x = 150;
-bulletText.y = 200;
+export const bulletLeftText = new PIXI.Text(``,bulletTextStyle);
+bulletLeftText.x = 150;
+bulletLeftText.y = 200;
