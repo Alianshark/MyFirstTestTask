@@ -12,6 +12,7 @@ let elapsed = 0.0
 let secElapsed = 0
 const fps = 60
 const timeLimitSec = 60
+const background = PIXI.Sprite.from('img/space.png')
 
 const app = new PIXI.Application({
   width: gameScreenWidth,
@@ -20,9 +21,9 @@ const app = new PIXI.Application({
 
 document.body.appendChild(app.view)
 
+app.stage.addChild(background)
 creatAsteriods(app)
 addKeybordMovement(app)
-
 app.stage.addChild(player)
 app.stage.addChild(gameTimeText)
 app.stage.addChild(bulletLeftText)
