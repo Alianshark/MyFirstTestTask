@@ -22,6 +22,7 @@ export function deleteBulletIfLeftScreen (app,bullet) {
   }
 }
 
+
 function createBullet(x,y) {
   const ract = new PIXI.Graphics()
   ract.beginFill('yellow')
@@ -43,17 +44,15 @@ function createBullet(x,y) {
 
 export function moveBullet (app, bullet) {
   bullet.y -= 10
- 
 }
 
 export function fireBullet (app) {
-  if (bullets.length <= 10) {
+  if (ammo.shots > 0) {
+    ammo.shots = ammo.shots - 1
     const newBullet = createBullet(player.x,player.y)
     bullets.push(newBullet)
     app.stage.addChild(newBullet)
-  }
-  
-  if (bullets.length > 10) {
+  } else {
     app.stage.addChild(endGameText)
   }
 }

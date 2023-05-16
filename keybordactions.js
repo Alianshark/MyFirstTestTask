@@ -1,6 +1,4 @@
-import * as PIXI from './lib/pixi.mjs'
-
-import { fireBullet, ammo } from './bullet.js'
+import { fireBullet } from './bullet.js'
 import { player } from './player.js'
 
 export function addKeybordMovement(app) {
@@ -16,8 +14,6 @@ export function addKeybordMovement(app) {
     }
     if (event.key == ' ') {
           fireBullet(app)
-          ammo.shots = ammo.shots - 1
-          console.log('space pressed')
         }
       }
   }
