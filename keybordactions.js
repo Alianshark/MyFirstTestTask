@@ -5,7 +5,6 @@ export function addKeybordMovement(app) {
   window.addEventListener('keydown', handleKeyDown)
   window.addEventListener('keyup', handleKeyUp)
   function handleKeyDown(event) {
-    console.log('Pressed:')
     if (event.key == 'ArrowLeft') {
       isArrowLeftPressed = true
     }

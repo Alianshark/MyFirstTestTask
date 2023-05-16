@@ -34,7 +34,6 @@ export function deleteBulletAndAsteriodIfHit (app, bullet) {
     deleteAsteroid(app, asteroidCollision)
   }
   if (asteroids.length == 0) {
-    console.log('lenght',asteroids.length)
     app.stage.addChild(youWinText)
   }
 }
