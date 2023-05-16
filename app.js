@@ -6,6 +6,7 @@ import { asteroids, creatAsteriods } from './asteroid.js'
 import { bulletLeftText } from './bulletText.js'
 import { gameTimeText } from './gameTimeText.js'
 import { gameScreenHeight, gameScreenWidth } from './config.js'
+import { endGameText } from './endGameText.js'
 
 let elapsed = 0.0
 
@@ -22,6 +23,7 @@ addKeybordMovement(app)
 app.stage.addChild(player)
 app.stage.addChild(gameTimeText)
 app.stage.addChild(bulletLeftText)
+app.stage.addChild(endGameText)
 
 app.ticker.add(gameLoop)
 
