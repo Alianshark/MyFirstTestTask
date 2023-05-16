@@ -9,6 +9,14 @@ export let ammo = {
   shots: 10
 }
 
+const bulletGraphicTemplate = new PIXI.Graphics()
+bulletGraphicTemplate.beginFill(0xffffff)
+bulletGraphicTemplate.drawCircle(10, 0, 10)
+bulletGraphicTemplate.endFill()
+bulletGraphicTemplate.beginFill('yellow')
+bulletGraphicTemplate.drawRect(0, 0, 20, 40)
+bulletGraphicTemplate.endFill()
+
 export function deleteBulletAndAsteriodIfHit (app, bullet) {
   let asteroidCollision 
   let bulletCollision
@@ -39,13 +47,7 @@ export function deleteBulletIfLeftScreen (app,bullet) {
 
 
 function createBullet(x,y) {
-  const bullet = new PIXI.Graphics()
-  bullet.beginFill(0xffffff)
-  bullet.drawCircle(10, 0, 10)
-  bullet.endFill()
-  bullet.beginFill('yellow')
-  bullet.drawRect(0, 0, 20, 40)
-  bullet.endFill()
+  const bullet = new PIXI.Graphics(bulletGraphicTemplate.geometry)
 
   bullet.x = x + player.width / 2 - bullet.width / 2
   bullet.y = y
