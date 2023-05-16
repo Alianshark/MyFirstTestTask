@@ -12,7 +12,7 @@ export function createNewAsteroid () {
 }
 
 export function creatAsteriods (app) {
-  for (let i=0; i < 10; i++) {  
+  for (let i=0; i < 10; i++) {
     let asteroid = createNewAsteroid()
     asteroids.push(asteroid)
     app.stage.addChild(asteroid)  

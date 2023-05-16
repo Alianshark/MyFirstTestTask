@@ -1,7 +1,7 @@
 import * as PIXI from './lib/pixi.mjs'
 import { player } from './player.js'
 import { endGameText } from './endGameText.js'
-import { gameScreenHeight } from './config.js'
+import { asteroids } from './asteroid.js'
 
 export let bullets = []
 export let ammo = {
@@ -9,8 +9,7 @@ export let ammo = {
 }
 
 export function deleteBulletIfHitAsteroid (app, bullet) {
-  console.log('bullet', bullet)
-  if (collision(bullet)) {
+  if (collision(bullet,asteroids[0])) {
     deleteBullet(app,bullet)
     return
   } 
@@ -58,7 +57,12 @@ export function fireBullet (app) {
 }
 
 function collision (bullet, asteroid) {
-  if (bullet.y < 300) {
+  if (
+      bullet.x > asteroid.x &&
+      bullet.x < asteroid.x + asteroid.width &&
+      bullet.y > asteroid.y &&
+      bullet.y < asteroid.y + asteroid.height
+    ) {
     return true
   } else {
     return false
