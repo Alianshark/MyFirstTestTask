@@ -23,7 +23,7 @@ addKeybordMovement(app)
 app.stage.addChild(player)
 app.stage.addChild(gameTimeText)
 app.stage.addChild(bulletLeftText)
-app.stage.addChild(endGameText)
+
 
 app.ticker.add(gameLoop)
 

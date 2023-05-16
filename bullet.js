@@ -1,5 +1,6 @@
 import * as PIXI from './lib/pixi.mjs'
 import { player } from './player.js'
+import { endGameText } from './endGameText.js'
 
 export let bullets = []
 export let ammo = {
@@ -30,10 +31,18 @@ export function moveBullet(bullet) {
 }
 
 export function fireBullet(app) {
-  if (bullets.length < 10) {
+  if (bullets.length <= 10) {
     const newBullet = createBullet(player.x,player.y)
     bullets.push(newBullet)
     app.stage.addChild(newBullet)
   }
+  
+  console.log('Are you working or not', bullets.length)
+  if (bullets.length > 10) {
+    console.log('Are you working or not')
+    app.stage.addChild(endGameText)
+  }
+  /*
+  */
 }
 
