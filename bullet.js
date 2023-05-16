@@ -2,6 +2,7 @@ import * as PIXI from './lib/pixi.mjs'
 import { player } from './player.js'
 import { endGameText } from './endGameText.js'
 import { asteroids } from './asteroid.js'
+import { deleteAsteroid } from './asteroid.js'
 
 export let bullets = []
 export let ammo = {
@@ -9,10 +10,21 @@ export let ammo = {
 }
 
 export function deleteBulletIfHitAsteroid (app, bullet) {
-  if (collision(bullet,asteroids[0])) {
-    deleteBullet(app,bullet)
-    return
-  } 
+  let asteroidCollision 
+  let bulletCollision
+  asteroids.forEach(checkAsteriodCOllision)
+  function  checkAsteriodCOllision (asteroid) {
+    if (collision(bullet, asteroid)) {  
+      asteroidCollision = asteroid
+      bulletCollision = bullet
+    }
+  }
+  if (bulletCollision) {
+    deleteBullet(app, bulletCollision) 
+  }
+  if (asteroidCollision) {  
+    deleteAsteroid(app, asteroidCollision)
+  }
 }
 
 export function deleteBulletIfLeftScreen (app,bullet) {
@@ -84,3 +96,4 @@ function deleteBullet (app, bullet) {
   app.stage.removeChild(bullet)
   bullet.destroy()
 }
+

@@ -18,3 +18,19 @@ export function creatAsteriods (app) {
     app.stage.addChild(asteroid)  
   }
 }
+
+export function deleteAsteroid (app, asteroid) {
+  deleteAsteroidFromArray(asteroid)
+  app.stage.removeChild(asteroid)
+  asteroid.destroy()
+}
+
+function deleteAsteroidFromArray (asteroid) {
+  asteroids = asteroids.filter(function(item) {
+    if (item == asteroid) {
+      return false
+    } else {
+      return true
+    }
+  })
+}
