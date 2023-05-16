@@ -1,12 +1,12 @@
 import * as PIXI from './lib/pixi.mjs'
-import { moveBullet, bullets, ammo, deleteBulletIfHitAsteroid, deleteBulletIfLeftScreen } from './bullet.js'
+import { moveBullet, bullets, ammo, deleteBulletAndAsteriodIfHit, deleteBulletIfLeftScreen } from './bullet.js'
 import { player } from './player.js'
 import { addKeybordMovement, movePlayer } from './keybordactions.js'
 import { creatAsteriods } from './asteroid.js'
 import { bulletLeftText } from './bulletText.js'
 import { gameTimeText } from './gameTimeText.js'
 import { gameScreenHeight, gameScreenWidth } from './config.js'
-import { endGameText } from './endGameText.js'
+import { youLooseText } from './endGameText.js'
 
 let elapsed = 0.0
 let secElapsed = 0
@@ -36,7 +36,7 @@ function gameLoop(delta) {
   bulletLeftText.text = `bullets left: ${ammo.shots}`
   bullets.forEach(function (bullet) {
     moveBullet(app, bullet)
-    deleteBulletIfHitAsteroid(app,bullet)     
+    deleteBulletAndAsteriodIfHit(app,bullet)     
     if (!bullet.destroyed) {
       deleteBulletIfLeftScreen(app, bullet)
     }
@@ -47,7 +47,7 @@ function gameLoop(delta) {
 
 function endGameIfTimeOver () {
   if (secElapsed >= timeLimitSec) {
-    app.stage.addChild(endGameText)
+    app.stage.addChild(youLooseText)
     app.ticker.stop()
   } 
 }

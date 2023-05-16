@@ -1,6 +1,7 @@
 import * as PIXI from './lib/pixi.mjs'
 
 export let asteroids = []
+const numAsteroids = 10
 
 export function createNewAsteroid () {  
   let asteroid = PIXI.Sprite.from('./img/metteor.png')
@@ -12,7 +13,7 @@ export function createNewAsteroid () {
 }
 
 export function creatAsteriods (app) {
-  for (let i=0; i < 10; i++) {
+  for (let i = 0; i < numAsteroids ; i++) {
     let asteroid = createNewAsteroid()
     asteroids.push(asteroid)
     app.stage.addChild(asteroid)  

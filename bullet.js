@@ -1,6 +1,6 @@
 import * as PIXI from './lib/pixi.mjs'
 import { player } from './player.js'
-import { endGameText } from './endGameText.js'
+import { youLooseText, youWinText } from './endGameText.js'
 import { asteroids } from './asteroid.js'
 import { deleteAsteroid } from './asteroid.js'
 
@@ -9,7 +9,7 @@ export let ammo = {
   shots: 10
 }
 
-export function deleteBulletIfHitAsteroid (app, bullet) {
+export function deleteBulletAndAsteriodIfHit (app, bullet) {
   let asteroidCollision 
   let bulletCollision
   asteroids.forEach(checkAsteriodCOllision)
@@ -24,6 +24,10 @@ export function deleteBulletIfHitAsteroid (app, bullet) {
   }
   if (asteroidCollision) {  
     deleteAsteroid(app, asteroidCollision)
+  }
+  if (asteroids.length == 0) {
+    console.log('lenght',asteroids.length)
+    app.stage.addChild(youWinText)
   }
 }
 
@@ -48,7 +52,7 @@ function createBullet(x,y) {
   const bullet = new PIXI.Container()
   bullet.addChild(circle)
   bullet.addChild(ract)
-  bullet.x = x + player.width/2 - bullet.width/2
+  bullet.x = x + player.width / 2 - bullet.width / 2
   bullet.y = y
   return bullet
 }
@@ -64,7 +68,7 @@ export function fireBullet (app) {
     bullets.push(newBullet)
     app.stage.addChild(newBullet)
   } else {
-    app.stage.addChild(endGameText)
+    app.stage.addChild(youLooseText)
   }
 }
 
