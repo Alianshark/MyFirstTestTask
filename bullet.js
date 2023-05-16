@@ -74,9 +74,9 @@ export function fireBullet (app) {
 
 function collision (bullet, asteroid) {
   if (
-      bullet.x > asteroid.x &&
+      bullet.x + bullet.width > asteroid.x &&
       bullet.x < asteroid.x + asteroid.width &&
-      bullet.y > asteroid.y &&
+      bullet.y + bullet.height > asteroid.y &&
       bullet.y < asteroid.y + asteroid.height
     ) {
     return true
