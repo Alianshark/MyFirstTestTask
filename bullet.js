@@ -30,21 +30,21 @@ function createBullet(x,y) {
 export function moveBullet (app, bullet) {
   bullet.y -= 10
   const coll = collision(bullet)
+  if (collision(bullet)) {
+    deleteBulletFromArray(bullet)
+    app.stage.removeChild(bullet)
+    bullet.destroy()
+    return
+  } 
   console.log('mycollision',coll)
   if (bullet.y < 0) {
-    bullets = bullets.filter(function(item) {
-      if( item == bullet ) {
-        return false
-      } else {
-        return true
-      }
-    })
+    deleteBulletFromArray(bullet)
     app.stage.removeChild(bullet)
     bullet.destroy()
   }
 }
 
-export function fireBullet(app) {
+export function fireBullet (app) {
   if (bullets.length <= 10) {
     const newBullet = createBullet(player.x,player.y)
     bullets.push(newBullet)
@@ -64,3 +64,12 @@ function collision (bullet, asteroid) {
   }
 }
 
+function deleteBulletFromArray (bullet) {
+  bullets = bullets.filter(function(item) {
+    if (item == bullet) {
+      return false
+    } else {
+      return true
+    }
+  })
+}
