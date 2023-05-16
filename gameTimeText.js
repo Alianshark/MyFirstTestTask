@@ -5,7 +5,7 @@ const gameTimeTextStyle = new PIXI.TextStyle({
     fill: ['#ffffff', '#00ff99']
 })
   
-export const gameTimeText = new PIXI.Text(` `,gameTimeTextStyle);
-gameTimeText.x = gameScreenWidth;
+export const gameTimeText = new PIXI.Text(`---`,gameTimeTextStyle);
+gameTimeText.x = gameScreenWidth / 2 ;
 gameTimeText.y = 0;
   

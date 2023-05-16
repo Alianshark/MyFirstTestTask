@@ -2,13 +2,16 @@ import * as PIXI from './lib/pixi.mjs'
 import { moveBullet, bullets, ammo } from './bullet.js'
 import { player } from './player.js'
 import { addKeybordMovement, movePlayer } from './keybordactions.js'
-import { asteroids, creatAsteriods } from './asteroid.js'
+import { creatAsteriods } from './asteroid.js'
 import { bulletLeftText } from './bulletText.js'
 import { gameTimeText } from './gameTimeText.js'
 import { gameScreenHeight, gameScreenWidth } from './config.js'
 import { endGameText } from './endGameText.js'
 
 let elapsed = 0.0
+let secElapsed = 0
+const fps = 60
+const timeLimitSec = 5
 
 const app = new PIXI.Application({
   width: gameScreenWidth,
@@ -29,8 +32,8 @@ app.ticker.add(gameLoop)
 
 function gameLoop(delta) {
   elapsed += delta
-  
-  gameTimeText.text = 60 - Math.floor(elapsed/60) 
+  secElapsed = elapsed/fps
+  gameTimeText.text = timeLimitSec - Math.floor(secElapsed) 
   bulletLeftText.text = `bullets left: ${ammo.shots}`
   bullets.forEach(moveBullet)
   movePlayer()
@@ -38,10 +41,10 @@ function gameLoop(delta) {
 }
 
 function endGameIfTimeOver () {
-  if (elapsed >= 3600) {
-    gameTimeText.x = gameScreenWidth / 2 - gameTimeText.width / 2
-    gameTimeText.y = gameScreenHeight / 2 - gameTimeText.height / 2
-    gameTimeText.text = 'game Over'
+  if (secElapsed >= timeLimitSec) {
+    app.stage.addChild(endGameText)
     app.ticker.stop()
   } 
 }
+
+
