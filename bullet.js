@@ -29,18 +29,13 @@ function createBullet(x,y) {
 
 export function moveBullet (app, bullet) {
   bullet.y -= 10
-  const coll = collision(bullet)
   if (collision(bullet)) {
-    deleteBulletFromArray(bullet)
-    app.stage.removeChild(bullet)
-    bullet.destroy()
+    deleteBullet(app,bullet)
     return
   } 
-  console.log('mycollision',coll)
+
   if (bullet.y < 0) {
-    deleteBulletFromArray(bullet)
-    app.stage.removeChild(bullet)
-    bullet.destroy()
+    deleteBullet(app, bullet)
   }
 }
 
@@ -72,4 +67,10 @@ function deleteBulletFromArray (bullet) {
       return true
     }
   })
+}
+
+function deleteBullet (app, bullet) {
+  deleteBulletFromArray(bullet)
+  app.stage.removeChild(bullet)
+  bullet.destroy()
 }
