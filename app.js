@@ -11,7 +11,7 @@ import { endGameText } from './endGameText.js'
 let elapsed = 0.0
 let secElapsed = 0
 const fps = 60
-const timeLimitSec = 5
+const timeLimitSec = 60
 
 const app = new PIXI.Application({
   width: gameScreenWidth,
@@ -27,7 +27,6 @@ app.stage.addChild(player)
 app.stage.addChild(gameTimeText)
 app.stage.addChild(bulletLeftText)
 
-
 app.ticker.add(gameLoop)
 
 function gameLoop(delta) {
@@ -35,7 +34,9 @@ function gameLoop(delta) {
   secElapsed = elapsed/fps
   gameTimeText.text = timeLimitSec - Math.floor(secElapsed) 
   bulletLeftText.text = `bullets left: ${ammo.shots}`
-  bullets.forEach(moveBullet)
+  bullets.forEach(function (bullet) {
+    moveBullet(app, bullet)
+  })
   movePlayer()
   endGameIfTimeOver()
 }
@@ -46,5 +47,7 @@ function endGameIfTimeOver () {
     app.ticker.stop()
   } 
 }
+
+
 
 

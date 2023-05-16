@@ -1,6 +1,7 @@
 import * as PIXI from './lib/pixi.mjs'
 import { player } from './player.js'
 import { endGameText } from './endGameText.js'
+import { gameScreenHeight } from './config.js'
 
 export let bullets = []
 export let ammo = {
@@ -26,8 +27,20 @@ function createBullet(x,y) {
   return bullet
 }
 
-export function moveBullet(bullet) {
+export function moveBullet(app, bullet) {
   bullet.y -= 10
+  if (bullet.y < 0) {
+    bullets = bullets.filter(function(item) {
+      if( item == bullet ) {
+        return false
+      } else {
+        return true
+      }
+    })
+    app.stage.removeChild(bullet)
+    bullet.destroy()
+    console.log('bullet out')
+  }
 }
 
 export function fireBullet(app) {
@@ -42,6 +55,8 @@ export function fireBullet(app) {
     console.log('Are you working or not')
     app.stage.addChild(endGameText)
   }
+
+
   /*
   */
 }
