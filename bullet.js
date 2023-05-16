@@ -8,6 +8,20 @@ export let ammo = {
   shots: 10
 }
 
+export function deleteBulletIfHitAsteroid (app, bullet) {
+  console.log('bullet', bullet)
+  if (collision(bullet)) {
+    deleteBullet(app,bullet)
+    return
+  } 
+}
+
+export function deleteBulletIfLeftScreen (app,bullet) {
+  if (bullet.y < 0) {
+    deleteBullet(app, bullet)
+  }
+}
+
 function createBullet(x,y) {
   const ract = new PIXI.Graphics()
   ract.beginFill('yellow')
@@ -29,14 +43,7 @@ function createBullet(x,y) {
 
 export function moveBullet (app, bullet) {
   bullet.y -= 10
-  if (collision(bullet)) {
-    deleteBullet(app,bullet)
-    return
-  } 
-
-  if (bullet.y < 0) {
-    deleteBullet(app, bullet)
-  }
+ 
 }
 
 export function fireBullet (app) {

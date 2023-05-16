@@ -1,5 +1,5 @@
 import * as PIXI from './lib/pixi.mjs'
-import { moveBullet, bullets, ammo } from './bullet.js'
+import { moveBullet, bullets, ammo, deleteBulletIfHitAsteroid, deleteBulletIfLeftScreen } from './bullet.js'
 import { player } from './player.js'
 import { addKeybordMovement, movePlayer } from './keybordactions.js'
 import { creatAsteriods } from './asteroid.js'
@@ -36,6 +36,10 @@ function gameLoop(delta) {
   bulletLeftText.text = `bullets left: ${ammo.shots}`
   bullets.forEach(function (bullet) {
     moveBullet(app, bullet)
+    deleteBulletIfHitAsteroid(app,bullet)     
+    if (!bullet.destroyed) {
+      deleteBulletIfLeftScreen(app, bullet)
+    }
   })
   movePlayer()
   endGameIfTimeOver()
