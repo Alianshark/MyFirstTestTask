@@ -35,6 +35,7 @@ export function deleteBulletAndAsteriodIfHit (app, bullet) {
   }
   if (asteroids.length == 0) {
     app.stage.addChild(youWinText)
+    app.ticker.stop()
   }
 }
 
@@ -47,7 +48,6 @@ export function deleteBulletIfLeftScreen (app,bullet) {
 
 function createBullet(x,y) {
   const bullet = new PIXI.Graphics(bulletGraphicTemplate.geometry)
-
   bullet.x = x + player.width / 2 - bullet.width / 2
   bullet.y = y
   return bullet
